@@ -1,0 +1,52 @@
+included:
+  - YourProject/  # Ensure the path is correct for your source files
+
+disabled_rules:
+  - trailing_whitespace
+  - cyclomatic_complexity
+  - file_length
+  - type_body_length
+  - function_body_length
+
+opt_in_rules:
+  - attributes
+  - closure_spacing
+  - collection_alignment
+  - empty_count
+  - implicit_return
+  - indentation_width
+  - missing_docs
+
+excluded:
+  - Tests
+  - Pods
+
+line_length:
+  warning: 150
+  error: 180
+
+identifier_name:
+  min_length:
+    error: 3
+  max_length:
+    warning: 50
+    error: 70
+  excluded:  # This allows 'id' to be used without triggering a warning
+    - id
+
+type_name:
+  min_length:
+    error: 2
+  max_length:
+    warning: 40
+    error: 50
+
+force_cast:
+  severity: error
+
+force_try:
+  severity: warning
+
+missing_docs:
+  severity: warning
+
