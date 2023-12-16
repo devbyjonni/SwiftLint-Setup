@@ -21,7 +21,12 @@ Xcode 15 made a significant change by setting the default value of the `ENABLE_U
 error: Sandbox: swiftlint(19427) deny(1) file-read-data.
 ```
 
-To address this issue, update the `ENABLE_USER_SCRIPT_SANDBOXING` setting to `YES`.
+To address this issue, update the `ENABLE_USER_SCRIPT_SANDBOXING` setting to `YES`:
+1. Open Xcode.
+2. Select the project's TARGETS.
+3. Navigate to Build Settings.
+4. Search for `ENABLE_USER_SCRIPT_SANDBOXING`.
+5. Set it to `YES`.
 
 ```bash
 ENABLE_USER_SCRIPT_SANDBOXING=YES
