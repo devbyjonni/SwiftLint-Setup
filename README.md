@@ -64,5 +64,3 @@ Explanation:
 
 In summary, this command with `sudo` sets the path to the Xcode developer tools, allowing system-wide access. It's necessary to run with elevated privileges due to system-level configurations.
 ```
-
-Feel free to use this revised version or make additional adjustments based on your preferences.
