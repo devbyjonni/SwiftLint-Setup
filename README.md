@@ -16,33 +16,34 @@ open .swiftlint.yml
 
 ### Xcode Build Phase Script
 
-   - **Xcode Build Phase Script:**
-     To automatically run SwiftLint as part of your Xcode build process, add a build phase script:
+- **Xcode Build Phase Script:**
+  To automatically run SwiftLint as part of your Xcode build process, add a build phase script:
 
-     - Open your Xcode project.
-     - Select your project in the Project Navigator.
-     - Select the target for which you want to run SwiftLint.
-     - Go to the "Build Phases" tab.
-     - Click the "+" button and select "New Run Script Phase."
-     - In the script text area, paste the following script:
+  - Open your Xcode project.
+  - Select your project in the Project Navigator.
+  - Select the target for which you want to run SwiftLint.
+  - Go to the "Build Phases" tab.
+  - Click the "+" button and select "New Run Script Phase."
+  - In the script text area, paste the following script:
 
-     If you are on an arm64 architecture, you may need to update the PATH in your shell configuration. Add the following lines:
+    If you are on an arm64 architecture, you may need to update the PATH in your shell configuration. Add the following lines:
 
-     ```bash
-     if [[ "$(uname -m)" == arm64 ]]; then
-         export PATH="/opt/homebrew/bin:$PATH"
-     fi
-     ```
-     
-       ```bash
-       if which swiftlint > /dev/null; then
-         swiftlint
-       else
-         echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-       fi
-       ```
+    ```bash
+    if [[ "$(uname -m)" == arm64 ]]; then
+        export PATH="/opt/homebrew/bin:$PATH"
+    fi
+    ```
+    
+    ```bash
+    if which swiftlint > /dev/null; then
+        swiftlint
+    else
+        echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+    fi
+    ```
 
-     - Drag the new run script phase above the "Compile Sources" phase to ensure SwiftLint runs before compilation.
+  - Drag the new run script phase above the "Compile Sources" phase to ensure SwiftLint runs before compilation.
+
     
 ## Xcode 15 Changes
 
