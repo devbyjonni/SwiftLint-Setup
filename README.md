@@ -1,4 +1,4 @@
-# SwiftLint Setup
+# SwiftLint Setup for Xcode 15
 
 ## Installation
 
