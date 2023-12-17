@@ -14,7 +14,7 @@ touch .swiftlint.yml
 open .swiftlint.yml
 ```
 
-
+- **Xcode Build Phase Script:**
 
    - **Xcode Build Phase Script:**
      To automatically run SwiftLint as part of your Xcode build process, add a build phase script:
