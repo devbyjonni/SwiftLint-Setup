@@ -14,6 +14,36 @@ touch .swiftlint.yml
 open .swiftlint.yml
 ```
 
+
+
+   - **Xcode Build Phase Script:**
+     To automatically run SwiftLint as part of your Xcode build process, add a build phase script:
+
+     - Open your Xcode project.
+     - Select your project in the Project Navigator.
+     - Select the target for which you want to run SwiftLint.
+     - Go to the "Build Phases" tab.
+     - Click the "+" button and select "New Run Script Phase."
+     - In the script text area, paste the following script:
+
+     If you are on an arm64 architecture, you may need to update the PATH in your shell configuration. Add the following lines:
+
+     ```bash
+     if [[ "$(uname -m)" == arm64 ]]; then
+         export PATH="/opt/homebrew/bin:$PATH"
+     fi
+     ```
+     
+       ```bash
+       if which swiftlint > /dev/null; then
+         swiftlint
+       else
+         echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+       fi
+       ```
+
+     - Drag the new run script phase above the "Compile Sources" phase to ensure SwiftLint runs before compilation.
+    
 ## Xcode 15 Changes
 
 Xcode 15 made a significant change by setting the default value of the `ENABLE_USER_SCRIPT_SANDBOXING` Build Setting from NO to YES. As a result, SwiftLint encounters an error related to missing file permissions, which typically manifests as follows:
@@ -30,24 +60,6 @@ To address this issue, update the `ENABLE_USER_SCRIPT_SANDBOXING` setting to `YE
 
 ```bash
 ENABLE_USER_SCRIPT_SANDBOXING=YES
-```
-
-Additionally, if you are on an arm64 architecture, you may need to update the PATH:
-
-```bash
-if [[ "$(uname -m)" == arm64 ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-fi
-```
-
-Finally, include the following script in your Xcode project's build phases to run SwiftLint:
-
-```bash
-if which swiftlint > /dev/null; then
-  swiftlint
-else
-  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
-fi
 ```
 
 ## Problems and Solutions
